@@ -1,3 +1,9 @@
+const container = document.querySelector(".container");
+const resetButton = document.querySelector("button");
+resetButton.addEventListener("click", userInput);
+
+start();
+
 function start(gridSize = 16) {
     for (let i = 0; i < (gridSize**2); i++){
         const gridBox = document.createElement("div");
@@ -10,7 +16,11 @@ function start(gridSize = 16) {
 }
 
 function mouseHover(e) {
-    e.target.style.backgroundColor = "red";
+    let hue = Math.floor(Math.random() * 360);
+    let saturation = Math.floor(Math.random() * 101);
+    let lightness = Math.floor(Math.random() * 101);
+
+    e.target.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
 
 function userInput() {
@@ -27,8 +37,5 @@ function userInput() {
     start(userInputGridSize);
 }
 
-const container = document.querySelector(".container");
-const resetButton = document.querySelector("button");
-start();
-resetButton.addEventListener("click", userInput);
+
 
